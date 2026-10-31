@@ -99,7 +99,8 @@ jobs:
             echo "변경사항 없음 (미국 휴장일이면 정상)"
           else
             git commit -m "${{ steps.build.outputs.asof }} · ${{ steps.build.outputs.label }} · ${{ steps.build.outputs.alloc }}"
-            git push
+            git pull --rebase -X theirs origin main
+            git push origin main
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
